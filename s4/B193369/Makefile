@@ -1,6 +1,6 @@
 all:
 	javac Hello.java -classpath "../.."
-	javac Frequencer.java -classpath "../.."
+	javac -encoding UTF-8 Frequencer.java -classpath "../.."
 	javac InformationEstimator.java -classpath "../.."
 	javac TestCase.java -classpath "../.."
 run:

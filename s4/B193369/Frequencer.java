@@ -29,12 +29,13 @@ public class Frequencer implements FrequencerInterface {
 	}
 
 	public int frequency() {
-		if (myTarget.equals(null) || myTarget.length == 0) {
-			return -1;
-		}
-		if (myTarget.equals(null) || mySpace.length == 0) {
-			return 0;
-		}
+		// mytarget,myspaceに格納される値がnullおよび長さが0のとき
+		// if (myTarget.equals(null) || myTarget.length == 0) {
+		// return -1;
+		// }
+		// if (mySpace.equals(null) || mySpace.length == 0) {
+		// return 0;
+		// }
 
 		int targetLength = myTarget.length;
 		int spaceLength = mySpace.length;
