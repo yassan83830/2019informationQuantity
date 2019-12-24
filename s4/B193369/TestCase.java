@@ -44,6 +44,7 @@ public class TestCase {
 			freq = myObject.frequency();
 			System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears " + freq + " times. ");
 			if (4 == freq) {
+
 				System.out.println("OK");
 			} else {
 				System.out.println("WRONG");
