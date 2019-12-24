@@ -34,6 +34,7 @@ interface FrequencerInterface { // This interface provides the design for freque
 
 public class TestCase {
 	public static void main(String[] args) {
+
 		try {
 			FrequencerInterface myObject;
 			int freq;
@@ -48,6 +49,15 @@ public class TestCase {
 			} else {
 				System.out.println("WRONG");
 			}
+
+		} catch (Exception e) {
+			System.out.println("Exception occurred: STOP");
+		}
+
+		try {
+			FrequencerInterface myObject;
+			int freq;
+			System.out.println("checking s4.B193369.Frequencer");
 
 			// Test1
 			// Space: Hi Ho Hi Ho,not null
@@ -64,6 +74,15 @@ public class TestCase {
 				System.out.println("WRONG");
 			}
 
+		} catch (Exception e) {
+			System.out.println("Exception occurred: STOP");
+		}
+
+		try {
+			FrequencerInterface myObject;
+			int freq;
+			System.out.println("checking s4.B193369.Frequencer");
+
 			// Test2
 			// Space: Hi Ho Hi Ho,not null
 			// Target: "", null
@@ -79,6 +98,15 @@ public class TestCase {
 				System.out.println("WRONG");
 			}
 
+		} catch (Exception e) {
+			System.out.println("Exception occurred: STOP");
+		}
+
+		try {
+			FrequencerInterface myObject;
+			int freq;
+			System.out.println("checking s4.B193369.Frequencer");
+
 			// Test3
 			// Space: "",null
 			// Target: H, not null
@@ -93,6 +121,14 @@ public class TestCase {
 			} else {
 				System.out.println("WRONG");
 			}
+		} catch (Exception e) {
+			System.out.println("Exception occurred: STOP");
+		}
+
+		try {
+			FrequencerInterface myObject;
+			int freq;
+			System.out.println("checking s4.B193369.Frequencer");
 
 			// Test4
 			// Space: "", null
