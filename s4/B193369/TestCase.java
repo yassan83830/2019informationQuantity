@@ -8,6 +8,7 @@ interface FrequencerInterface { // This interface provides the design for freque
 	void setTarget(byte[] target); // set the data to search.
 
 	void setSpace(byte[] space); // set the data to be searched target from.
+<<<<<<< HEAD
 
 	int frequency(); // It return -1, when TARGET is not set or TARGET's length is zero
 						// Otherwise, it return 0, when SPACE is not set or Space's length is zero
@@ -19,6 +20,19 @@ interface FrequencerInterface { // This interface provides the design for freque
 	// For the incorrect value of START or END, the behavior is undefined.
 }*/
 
+=======
+
+	int frequency(); // It return -1, when TARGET is not set or TARGET's length is zero
+						// Otherwise, it return 0, when SPACE is not set or Space's length is zero
+						// Otherwise, get the frequency of TAGET in SPACE
+
+	int subByteFrequency(int start, int end);
+	// get the frequency of subByte of taget, i.e target[start], taget[start+1], ...
+	// , target[end-1].
+	// For the incorrect value of START or END, the behavior is undefined.
+}*/
+
+>>>>>>> a7e47c2fa83b5636212ae0beb02dedca1f7dfc9b
 /*
  * package s4.specification; public interface InformationEstimatorInterface{
  * void setTarget(byte target[]); // set the data for computing the information
@@ -44,11 +58,26 @@ public class TestCase {
 			freq = myObject.frequency();
 			System.out.print("\"H\" in \"Hi Ho Hi Ho\" appears " + freq + " times. ");
 			if (4 == freq) {
+<<<<<<< HEAD
 
+=======
 				System.out.println("OK");
 			} else {
 				System.out.println("WRONG");
 			}
+
+			myObject = new s4.B193369.Frequencer();
+			myObject.setSpace("".getBytes());
+			myObject.setTarget("H".getBytes());
+			freq = myObject.frequency();
+			System.out.print("\"\" in \"Hi Ho Hi Ho\" appears " + freq + " times. ");
+			if (0 == freq) {
+>>>>>>> a7e47c2fa83b5636212ae0beb02dedca1f7dfc9b
+				System.out.println("OK");
+			} else {
+				System.out.println("WRONG");
+			}
+<<<<<<< HEAD
 
 			myObject = new s4.B193369.Frequencer();
 			myObject.setSpace("".getBytes());
@@ -104,6 +133,52 @@ public class TestCase {
 				System.out.println("Wrong");
 			}
 
+=======
+
+			myObject = new s4.B193369.Frequencer();
+			myObject.setSpace("Hi Ho Hi Ho".getBytes());
+			myObject.setTarget("".getBytes());
+			freq = myObject.frequency();
+			System.out.print("\"\" in \"Hi Ho Hi Ho\" appears " + freq + " times. ");
+			if (-1 == freq) {
+				System.out.println("OK");
+			} else {
+				System.out.println("WRONG");
+			}
+
+		} catch (Exception e) {
+			System.out.println("Exception occurred: STOP");
+		}
+
+		try {
+			InformationEstimatorInterface myObject;
+			double value;
+			System.out.println("checking s4.B193369.InformationEstimator");
+			myObject = new s4.B193369.InformationEstimator();
+			myObject.setSpace("3210321001230123".getBytes());
+			myObject.setTarget("0".getBytes());
+			value = myObject.estimation();
+			System.out.println(">0 " + value);
+			myObject.setTarget("01".getBytes());
+			value = myObject.estimation();
+			System.out.println(">01 " + value);
+			myObject.setTarget("0123".getBytes());
+			value = myObject.estimation();
+			System.out.println(">0123 " + value);
+			myObject.setTarget("00".getBytes());
+			value = myObject.estimation();
+			System.out.println(">00 " + value);
+
+			myObject.setTarget("".getBytes());
+			value = myObject.estimation();
+			System.out.println("> " + value);
+			if (value == 0.0) {
+				System.out.println("OK");
+			} else {
+				System.out.println("Wrong");
+			}
+
+>>>>>>> a7e47c2fa83b5636212ae0beb02dedca1f7dfc9b
 			myObject.setSpace("".getBytes());
 			myObject.setTarget("0".getBytes());
 			value = myObject.estimation();
