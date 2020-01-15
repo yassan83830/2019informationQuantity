@@ -121,10 +121,10 @@ public class Frequencer implements FrequencerInterface{
         // suffix_i is a string in mySpace starting at i-th position.
         // target_i_k is a string in myTarget start at j-th postion ending k-th position.
         // comparing suffix_i and target_j_k.
-        // if the beginning of suffix_i matches target_i_k, it return 0.
+        // if the beginning of suffix_i matches target_j_k, it return 0.
         // The behavior is different from suffixCompare on this case.
-        // if suffix_i > target_i_k it return 1; 
-        // if suffix_i < target_i_k it return -1;
+        // if suffix_i > target_j_k it return 1; 
+        // if suffix_i < target_j_k it return -1;
         // It should be used to search the appropriate index of some suffix.
         // Example of search 
         // suffix          target
@@ -163,6 +163,9 @@ public class Frequencer implements FrequencerInterface{
 
         // It returns the index of the first suffix 
         // which is equal or greater than target_start_end.                         
+	// Suppose target is set "Ho Ho Ho Ho"
+        // if start = 0, and end = 2, target_start_end is "Ho".
+        // if start = 0, and end = 3, target_start_end is "Ho ".
         // Assuming the suffix array is created from "Hi Ho Hi Ho",                 
         // if target_start_end is "Ho", it will return 5.                           
         // Assuming the suffix array is created from "Hi Ho Hi Ho",                 
@@ -191,6 +194,9 @@ public class Frequencer implements FrequencerInterface{
         */
         // It returns the index of the first suffix 
         // which is greater than target_start_end; (and not equal to target_start_end)
+	// Suppose target is set "High_and_Low",
+        // if start = 0, and end = 2, target_start_end is "Hi".
+        // if start = 1, and end = 2, target_start_end is "i".
         // Assuming the suffix array is created from "Hi Ho Hi Ho",                   
         // if target_start_end is "Ho", it will return 7 for "Hi Ho Hi Ho".  
         // Assuming the suffix array is created from "Hi Ho Hi Ho",          
