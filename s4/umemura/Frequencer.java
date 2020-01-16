@@ -200,6 +200,9 @@ public class Frequencer implements FrequencerInterface{
 
         // It returns the index of the first suffix 
         // which is equal or greater than target_start_end.                         
+	// Suppose target is set "Ho Ho Ho Ho"
+        // if start = 0, and end = 2, target_start_end is "Ho".
+        // if start = 0, and end = 3, target_start_end is "Ho ".
         // Assuming the suffix array is created from "Hi Ho Hi Ho",                 
         // if target_start_end is "Ho", it will return 5.                           
         // Assuming the suffix array is created from "Hi Ho Hi Ho",                 
@@ -229,6 +232,9 @@ public class Frequencer implements FrequencerInterface{
         */
         // It returns the index of the first suffix 
         // which is greater than target_start_end; (and not equal to target_start_end)
+	// Suppose target is set "High_and_Low",
+        // if start = 0, and end = 2, target_start_end is "Hi".
+        // if start = 1, and end = 2, target_start_end is "i".
         // Assuming the suffix array is created from "Hi Ho Hi Ho",                   
         // if target_start_end is "Ho", it will return 7 for "Hi Ho Hi Ho".  
         // Assuming the suffix array is created from "Hi Ho Hi Ho",          
