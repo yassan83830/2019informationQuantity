@@ -190,11 +190,6 @@ public class Frequencer implements FrequencerInterface {
                 return 1;
             } else if (suffix_i[a] < myTarget[a]) {
                 return -1;
-            } else if (suffix_i[a] == myTarget[a]) {
-                System.out.println("a:" + a);
-                if (a == k - 1) {
-                    return 0;
-                }
             }
         }
 
@@ -227,7 +222,7 @@ public class Frequencer implements FrequencerInterface {
                 break;
             }
         }
-        System.out.println("start" + i);
+        // System.out.println("start" + i);
         return i; // このコードは変更しなければならない。
     }
 
@@ -257,7 +252,7 @@ public class Frequencer implements FrequencerInterface {
             }
         }
 
-        System.out.println("end" + end);
+        // System.out.println("end" + end);
         return i; // このコードは変更しなければならない。
     }
 
