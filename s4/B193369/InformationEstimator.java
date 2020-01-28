@@ -105,6 +105,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
 	public static void main(String[] args) {
 		InformationEstimator myObject;
 		double value;
+		long startTime = System.nanoTime();
 		myObject = new InformationEstimator();
 		myObject.setSpace("3210321001230123".getBytes());
 		myObject.setTarget("0".getBytes());
@@ -119,5 +120,9 @@ public class InformationEstimator implements InformationEstimatorInterface {
 		myObject.setTarget("00".getBytes());
 		value = myObject.estimation();
 		System.out.println(">00 " + value);
+		long endTime = System.nanoTime();
+		System.out.println("開始時刻：" + startTime + " ナノ秒");
+		System.out.println("終了時刻：" + endTime + " ナノ秒");
+		System.out.println("処理時間：" + (endTime - startTime) + " ナノ秒");
 	}
 }
