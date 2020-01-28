@@ -1,5 +1,6 @@
-package s4.B193369; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
+package s4.B193369;
 
+// Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
 import java.lang.*;
 import s4.specification.*;
 
@@ -8,7 +9,7 @@ package s4.specification;
 public interface InformationEstimatorInterface{
     void setTarget(byte target[]); // set the data for computing the information quantities
     void setSpace(byte space[]); // set data for sample space to computer probability
-    double estimation(); // It returns 0.0 when the target is not set or Target's length is zero;
+    double estimation(); // It returns 0.0 when thåe target is not set or Target's length is zero;
 // It returns Double.MAX_VALUE, when the true value is infinite, or space is not set.
 // The behavior is undefined, if the true value is finete but larger than Double.MAX_VALUE.
 // Note that this happens only when the space is unreasonably large. We will encounter other problem anyway.
@@ -49,14 +50,30 @@ public class InformationEstimator implements InformationEstimatorInterface {
 		myFrequencer.setSpace(space);
 	}
 
-	public double estimation() {
-		if (myTarget.equals(null) || myTarget.length == 0) {
-			return 0.0;
-		}
-		if (mySpace.equals(null)) {
-			return Double.MAX_VALUE;
+	double f(byte[] target, int start, int end) {
+		double valuer = Double.MAX_VALUE;
+		double[] valuef = new double[target.length];
+
+		byte[] targetf = new byte[end - start];
+		for (int i = 0; i < end - start + 1; i++) {
+			targetf[i] = target[i];
 		}
 
+		myFrequencer.setTarget(subBytes(targetf, start, end));
+		valuef[0] = iq(myFrequencer.frequency());
+
+		for (int mid = 1; mid < end; mid++) {
+			myFrequencer.setTarget(subBytes(targetf, mid, end));
+			valuef[mid] = f(targetf, start, mid) + iq(myFrequencer.frequency());
+		}
+
+		for (int i = 0; i < end; i++) {
+			valuer = Math.min(valuer, valuef[i]);
+		}
+		return valuer;
+	}
+
+	public double estimation() {
 		boolean[] partition = new boolean[myTarget.length + 1];
 		int np;
 		np = 1 << (myTarget.length - 1);
@@ -80,20 +97,18 @@ public class InformationEstimator implements InformationEstimatorInterface {
 			int end = 0;
 			;
 			int start = end;
-			while (start < myTarget.length) {
-				// System.out.write(myTarget[end]);
-				end++;
-				;
-				while (partition[end] == false) {
-					// System.out.write(myTarget[end]);
-					end++;
-				}
-				// System.out.print("("+start+","+end+")");
-				myFrequencer.setTarget(subBytes(myTarget, start, end));
-				value1 = value1 + iq(myFrequencer.frequency());
-				start = end;
-			}
-			// System.out.println(" "+ value1);
+			// int start = 0;
+			end = myTarget.length;
+
+			value1 = f(myTarget, start, end);
+			/*
+			 * while(start<myTarget.length) { // System.out.write(myTarget[end]); end++;;
+			 * while(partition[end] == false) { // System.out.write(myTarget[end]); end++; }
+			 * // System.out.print("("+start+","+end+")");
+			 * myFrequencer.setTarget(subBytes(myTarget, start, end)); value1 = value1 +
+			 * iq(myFrequencer.frequency()); start = end; } // System.out.println(" "+
+			 * value1);
+			 */
 
 			// Get the minimal value in "value"
 			if (value1 < value)
@@ -105,7 +120,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
 	public static void main(String[] args) {
 		InformationEstimator myObject;
 		double value;
-		long startTime = System.nanoTime();
+		// long startTime = System.nanoTime();
 		myObject = new InformationEstimator();
 		myObject.setSpace("3210321001230123".getBytes());
 		myObject.setTarget("0".getBytes());
@@ -120,9 +135,10 @@ public class InformationEstimator implements InformationEstimatorInterface {
 		myObject.setTarget("00".getBytes());
 		value = myObject.estimation();
 		System.out.println(">00 " + value);
-		long endTime = System.nanoTime();
-		System.out.println("開始時刻：" + startTime + " ナノ秒");
-		System.out.println("終了時刻：" + endTime + " ナノ秒");
-		System.out.println("処理時間：" + (endTime - startTime) + " ナノ秒");
+		// long endTime = System.nanoTime();
+
+		// System.out.println("開始時刻：" + startTime + " ms");
+		// System.out.println("終了時刻：" + endTime + " ms");
+		// System.out.println("処理時間：" + (endTime - startTime) + " ms");
 	}
 }
