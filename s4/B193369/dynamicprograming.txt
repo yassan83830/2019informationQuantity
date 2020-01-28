@@ -1,0 +1,21 @@
+java -classpath "../.." s4.B193369/Frequencer
+ Hi Ho
+ Ho
+ Ho Hi Ho
+Hi Ho
+Hi Ho Hi Ho
+Ho
+Ho Hi Ho
+i Ho
+i Ho Hi Ho
+o
+o Hi Ho
+Freq = 4 OK
+java -classpath "../.." s4.B193369/InformationEstimator
+>0 2.0
+>01 3.0
+>0123 3.0
+>00 4.0
+開始時刻：1486743797562 ナノ秒
+終了時刻：1486781639306 ナノ秒
+処理時間：37841744 ナノ秒
