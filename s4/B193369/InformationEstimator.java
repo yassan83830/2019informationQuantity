@@ -55,7 +55,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
 		double[] valuef = new double[target.length];
 
 		byte[] targetf = new byte[end - start];
-		for (int i = 0; i < end - start + 1; i++) {
+		for (int i = 0; i < end - start; i++) {
 			targetf[i] = target[i];
 		}
 

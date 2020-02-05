@@ -173,26 +173,22 @@ public class Frequencer implements FrequencerInterface {
         // ここに比較のコードを書け
         //
 
-        // mySpaceのコピー
-        byte[] _mySpace = new byte[mySpace.length];
-        for (int a = 0; a < mySpace.length - 1; a++) {
-            _mySpace[a] = mySpace[a];
+        String suffix_i = new String(mySpace).substring(i);
+        String suffix_j_k = new String(myTarget).substring(j, k);
+
+        if (suffix_i.startsWith(suffix_j_k)) {
+            return 0;
         }
 
-        byte[] suffix_i = new byte[mySpace.length - i];
-        for (int a = i; a < mySpace.length; a++) {
-            suffix_i[a - i] = mySpace[a];
+        if (suffix_i.compareTo(suffix_j_k) < 0) {
+            return -1;
+        } else if (suffix_i.compareTo(suffix_j_k) > 0) {
+            return 1;
+        } else {
+            return 0;
         }
 
-        for (int a = 0; a < k; a++) {
-            if (suffix_i[a] > myTarget[a]) {
-                return 1;
-            } else if (suffix_i[a] < myTarget[a]) {
-                return -1;
-            }
-        }
-
-        return 0; // この行は変更しなければならない。
+        // return 0; // この行は変更しなければならない。
     }
 
     private int subByteStartIndex(int start, int end) {
@@ -214,15 +210,14 @@ public class Frequencer implements FrequencerInterface {
         //
 
         int index = 1;
-        int i;
-        for (i = 0; i < suffixArray.length; i++) {
+        for (int i = 0; i < suffixArray.length; i++) {
             index = targetCompare(suffixArray[i], start, end);
             if (index == 0) {
-                break;
+                return i;
             }
         }
         // System.out.println("start" + i);
-        return i; // このコードは変更しなければならない。
+        return suffixArray.length; // このコードは変更しなければならない。
     }
 
     private int subByteEndIndex(int start, int end) {
@@ -241,18 +236,16 @@ public class Frequencer implements FrequencerInterface {
         //
         // ここにコードを記述せよ
         //
-        int index = 1, index_before = 1;
-        int i;
-        for (i = 0; i < suffixArray.length; i++) {
-            index_before = index;
+        int index = 1;
+        for (int i = suffixArray.length - 1; i >= 0; i--) {
             index = targetCompare(suffixArray[i], start, end);
-            if (index != 0 && index_before == 0) {
-                break;
+            if (index == 0) {
+                return i + 1;
             }
         }
 
         // System.out.println("end" + end);
-        return i; // このコードは変更しなければならない。
+        return suffixArray.length; // このコードは変更しなければならない。
     }
 
     // Suffix Arrayを使ったプログラムのホワイトテストは、
